@@ -1,7 +1,7 @@
-FROM ubuntu:24.04 as builder
+FROM ubuntu:26.04 as builder
 RUN apt-get update -qq && \
   apt-get install -qy git build-essential libtool automake autoconf g++ pkg-config liburing-dev
-RUN git clone --depth 1 https://github.com/ublk-org/ublksrv 
+RUN git clone --depth 1 --revision v1.6 https://github.com/ublk-org/ublksrv 
 WORKDIR /ublksrv
 RUN autoreconf -i
 RUN ./configure

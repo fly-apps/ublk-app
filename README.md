@@ -4,7 +4,7 @@ This repository is a demo showing how to use `ublk` on Fly.io Machines.
 
 It contains a minimal Fly.io app setup that can be used to experiment with [userspace block devices][ublk] inside a Fly Machine.
 
-[ublk](https://docs.kernel.org/block/ublk.html)
+[ublk]: https://docs.kernel.org/block/ublk.html
 
 ## Files
 
