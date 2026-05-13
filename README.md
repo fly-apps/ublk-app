@@ -29,4 +29,9 @@ root@683d470b491268:/# mount |grep ublk
 root@683d470b491268:/# lsmod
 Module                  Size  Used by
 ublk_drv               32768  3
+
+root@683d470b491268:/# ls /dev/ublk* -l
+crw------- 1 root root  10, 260 May 13 20:05 /dev/ublk-control
+brw------- 1 root root 259,   0 May 13 20:05 /dev/ublkb0
+crw------- 1 root root 247,   0 May 13 20:05 /dev/ublkc0
 ```
