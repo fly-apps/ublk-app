@@ -2,11 +2,9 @@
 
 This repository is a demo showing how to use `ublk` on Fly.io Machines.
 
-It contains a minimal Fly.io app setup that can be used to experiment with userspace block devices inside a Fly Machine.
+It contains a minimal Fly.io app setup that can be used to experiment with [userspace block devices][ublk] inside a Fly Machine.
 
-## Links
-
-- [ublk kernel documentation](https://docs.kernel.org/block/ublk.html)
+[ublk](https://docs.kernel.org/block/ublk.html)
 
 ## Files
 
@@ -14,12 +12,21 @@ It contains a minimal Fly.io app setup that can be used to experiment with users
 - `fly.toml` — Fly.io app configuration
 - `start.sh` — startup script for the Machine
 
-## Deploy
+## Inside the machine
 
-```sh
-fly deploy
 ```
+root@683d470b491268:/# ublk list
+dev id 0: nr_hw_queues 1 queue_depth 128 block size 4096 dev_capacity 1048576
+ max rq size 524288 daemon pid 652 state LIVE
+ flags 0x42 [ URING_CMD_COMP_IN_TASK CMD_IOCTL_ENCODE ]
+ ublkc: 247:0 ublkb: 259:0 owner: 0:0
+ queue 0: tid 655 affinity(0 )
+ target {"backing_file":"/tmp/ublk.img","dev_size":536870912,"direct_io":1,"name":"loop","offset":0,"type":0}
 
-## Purpose
+root@683d470b491268:/# mount |grep ublk
+/dev/ublkb0 on /mnt/ublk type ext4 (rw,relatime)
 
-This app is intended as a demonstration of running `ublk` with Fly.io Machines, not as a production-ready application.
+root@683d470b491268:/# lsmod
+Module                  Size  Used by
+ublk_drv               32768  3
+```
